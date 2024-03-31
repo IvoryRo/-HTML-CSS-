@@ -15,15 +15,15 @@ jobs:
     - name: Send telegram message on push
       uses: appleboy/telegram-action@master
       with:
-        to: 714086278
-        token: 7127817825:AAEhwasMMff5x37gaZI5c0C9ArMnoTpi-E4
-        message: |
-          714086278 создал новый коммит: ${{ github.event.commits[0].message }}
-          Ссылка на коммит: https://github.com/IvoryRo/-HTML-CSS-.git/commit/${{github.sha}}
-          Репозиторий: https://github.com/IvoryRo/-HTML-CSS-.git
+        to: ${{ secrets.TG_ID }}
+        token: ${{ secrets.TG_TOKEN }}
+        message: 
+          ${{ github.actor }} создал новый коммит: ${{ github.event.commits[0].message }}
+          Ссылка на коммит: https://github.com/${{ github.repository }}/commit/${{github.sha}}
+          Репозиторий: https://github.com/${{ github.repository }}
             
-          CI/CD github actions: https://github.com/IvoryRo/-HTML-CSS-.git/actions
-          https://github.com/IvoryRo/-HTML-CSS-.git/actions/runs/${{github.run_id}}
+          CI/CD github actions: https://github.com/${{ github.repository }}/actions
+          https://github.com/${{ github.repository }}/actions/runs/${{github.run_id}}
     - name: Checkout
       uses: actions/checkout@v4
     - name: Пройти проверки HTML5 Validator
